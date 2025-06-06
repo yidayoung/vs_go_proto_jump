@@ -1,0 +1,11 @@
+{
+    "displayName": "Go Proto 跳转",
+    "description": "🚀 从Go生成的结构体智能跳转到原始Proto定义。支持枚举、自动索引和高性能缓存。",
+    "command.rebuildIndex.title": "重建Proto索引",
+    "command.rebuildIndex.category": "Go Proto 跳转",
+    "config.title": "Go Proto 跳转",
+    "config.protoDirs.description": "搜索proto文件的目录列表",
+    "config.protoFileSuffixes.description": "识别Go proto生成文件的后缀名列表（如：.pb.go）",
+    "config.enableCache.description": "启用proto索引缓存以提高性能",
+    "config.enableDebugLog.description": "启用调试日志"
+}

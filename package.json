@@ -1,7 +1,7 @@
 {
     "name": "go-proto-jump",
-    "displayName": "Go Proto Jump",
-    "description": "Jump to proto definition from generated Go structs",
+    "displayName": "%displayName%",
+    "description": "%description%",
     "version": "0.0.1",
     "publisher": "yidayoung",
     "author": {
@@ -9,9 +9,14 @@
         "email": "418621207@qq.com"
     },
     "license": "MIT",
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#00ADD8",
+        "theme": "dark"
+    },
     "repository": {
         "type": "git",
-        "url": "https://github.com/yidayoung/vs_go_proto_jump.git.git"
+        "url": "https://github.com/yidayoung/vs_go_proto_jump.git"
     },
     "bugs": {
         "url": "https://github.com/yidayoung/vs_go_proto_jump.git/issues"
@@ -22,31 +27,31 @@
         "golang",
         "protobuf",
         "proto",
-        "jump",
-        "definition",
-        "navigation"
+        "grpc",
+        "navigation",
+        "go-to-definition",
+        "struct",
+        "enum",
+        "pb.go"
     ],
     "engines": {
         "vscode": "^1.74.0"
     },
     "categories": [
-        "Programming Languages",
-        "Other"
+        "Programming Languages"
     ],
-    "activationEvents": [
-        "onLanguage:go"
-    ],
+    "activationEvents": [],
     "main": "./out/extension.js",
     "contributes": {
         "commands": [
             {
                 "command": "go-proto-jump.rebuildIndex",
-                "title": "重建Proto索引",
-                "category": "Go Proto Jump"
+                "title": "%command.rebuildIndex.title%",
+                "category": "%command.rebuildIndex.category%"
             }
         ],
         "configuration": {
-            "title": "Go Proto Jump",
+            "title": "%config.title%",
             "properties": {
                 "goProtoJump.protoDirs": {
                     "type": "array",
@@ -58,7 +63,7 @@
                         "protobuf",
                         "schemas"
                     ],
-                    "description": "搜索proto文件的目录列表",
+                    "description": "%config.protoDirs.description%",
                     "items": {
                         "type": "string"
                     }
@@ -66,17 +71,12 @@
                 "goProtoJump.enableDebugLog": {
                     "type": "boolean",
                     "default": false,
-                    "description": "启用调试日志"
+                    "description": "%config.enableDebugLog.description%"
                 },
                 "goProtoJump.enableCache": {
                     "type": "boolean",
                     "default": true,
-                    "description": "启用磁盘缓存以提高性能"
-                },
-                "goProtoJump.cacheVersion": {
-                    "type": "string",
-                    "default": "1.0",
-                    "description": "缓存版本号（内部使用）"
+                    "description": "%config.enableCache.description%"
                 },
                 "goProtoJump.protoFileSuffixes": {
                     "type": "array",
@@ -86,7 +86,7 @@
                         ".proto.go",
                         ".pb.gw.go"
                     ],
-                    "description": "识别proto生成Go文件的后缀列表",
+                    "description": "%config.protoFileSuffixes.description%",
                     "items": {
                         "type": "string"
                     }
@@ -97,22 +97,11 @@
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js"
+        "watch": "tsc -watch -p ./"
     },
     "devDependencies": {
-        "@types/glob": "^8.1.0",
-        "@types/mocha": "^10.0.1",
         "@types/node": "16.x",
         "@types/vscode": "^1.74.0",
-        "@typescript-eslint/eslint-plugin": "^5.45.0",
-        "@typescript-eslint/parser": "^5.45.0",
-        "@vscode/test-electron": "^2.2.0",
-        "eslint": "^8.28.0",
-        "glob": "^8.0.3",
-        "mocha": "^10.1.0",
         "typescript": "^4.9.4"
     }
 }

@@ -1,0 +1,11 @@
+{
+    "displayName": "Go Proto Jump",
+    "description": "🚀 Smart navigation from Go generated structs to original Proto definitions. Support enums, auto-indexing, and high-performance caching.",
+    "command.rebuildIndex.title": "Rebuild Proto Index",
+    "command.rebuildIndex.category": "Go Proto Jump",
+    "config.title": "Go Proto Jump",
+    "config.protoDirs.description": "List of directories to search for proto files",
+    "config.protoFileSuffixes.description": "File suffixes to identify Go proto generated files (e.g., .pb.go)",
+    "config.enableCache.description": "Enable caching of proto index for better performance",
+    "config.enableDebugLog.description": "Enable debug logging"
+}

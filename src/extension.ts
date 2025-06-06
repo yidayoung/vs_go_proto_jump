@@ -17,11 +17,11 @@ export function activate(context: vscode.ExtensionContext) {
 
     // 注册重建索引命令
     const rebuildIndexCommand = vscode.commands.registerCommand('go-proto-jump.rebuildIndex', async () => {
-        vscode.window.showInformationMessage('正在重建Proto索引...');
+        vscode.window.showInformationMessage('Rebuilding proto index...');
         await indexManager.buildIndex();
         const stats = enhancedDefinitionProvider.getIndexStats();
         vscode.window.showInformationMessage(
-            `Proto索引重建完成: ${stats.definitions}个定义`
+            `Proto index rebuilt successfully! Found ${stats.definitions} definitions.`
         );
     });
 

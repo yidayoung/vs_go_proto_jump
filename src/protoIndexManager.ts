@@ -29,6 +29,7 @@ export interface CacheData {
 }
 
 export class ProtoIndexManager {
+    private static readonly CACHE_VERSION = '1.0'; // 内置缓存版本号
     private static instance: ProtoIndexManager;
     private protoIndex: Map<string, ProtoFileInfo> = new Map(); // key: proto文件路径
     private definitionIndex: Map<string, ProtoDefinitionInfo> = new Map(); // key: 定义名称
@@ -465,8 +466,7 @@ export class ProtoIndexManager {
                 const cacheData: CacheData = JSON.parse(cacheContent);
 
                 // 验证缓存版本
-                const currentVersion = config.get<string>('cacheVersion', '1.0');
-                if (cacheData.version !== currentVersion) {
+                if (cacheData.version !== ProtoIndexManager.CACHE_VERSION) {
                     console.log('Cache version mismatch, rebuilding index');
                     return;
                 }
@@ -512,7 +512,7 @@ export class ProtoIndexManager {
 
         try {
             const cacheData: CacheData = {
-                version: config.get<string>('cacheVersion', '1.0'),
+                version: ProtoIndexManager.CACHE_VERSION,
                 timestamp: Date.now(),
                 files: {},
                 definitions: {},
