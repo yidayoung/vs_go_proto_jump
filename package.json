@@ -1,0 +1,118 @@
+{
+    "name": "go-proto-jump",
+    "displayName": "Go Proto Jump",
+    "description": "Jump to proto definition from generated Go structs",
+    "version": "0.0.1",
+    "publisher": "yidayoung",
+    "author": {
+        "name": "yidayoung",
+        "email": "418621207@qq.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yidayoung/vs_go_proto_jump.git.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yidayoung/vs_go_proto_jump.git/issues"
+    },
+    "homepage": "https://github.com/yidayoung/vs_go_proto_jump.git#readme",
+    "keywords": [
+        "go",
+        "golang",
+        "protobuf",
+        "proto",
+        "jump",
+        "definition",
+        "navigation"
+    ],
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:go"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "go-proto-jump.rebuildIndex",
+                "title": "重建Proto索引",
+                "category": "Go Proto Jump"
+            }
+        ],
+        "configuration": {
+            "title": "Go Proto Jump",
+            "properties": {
+                "goProtoJump.protoDirs": {
+                    "type": "array",
+                    "default": [
+                        "proto",
+                        "protos",
+                        "api",
+                        "pb",
+                        "protobuf",
+                        "schemas"
+                    ],
+                    "description": "搜索proto文件的目录列表",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "goProtoJump.enableDebugLog": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "启用调试日志"
+                },
+                "goProtoJump.enableCache": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "启用磁盘缓存以提高性能"
+                },
+                "goProtoJump.cacheVersion": {
+                    "type": "string",
+                    "default": "1.0",
+                    "description": "缓存版本号（内部使用）"
+                },
+                "goProtoJump.protoFileSuffixes": {
+                    "type": "array",
+                    "default": [
+                        ".pb.go",
+                        "_grpc.pb.go",
+                        ".proto.go",
+                        ".pb.gw.go"
+                    ],
+                    "description": "识别proto生成Go文件的后缀列表",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.74.0",
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
+        "@vscode/test-electron": "^2.2.0",
+        "eslint": "^8.28.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.1.0",
+        "typescript": "^4.9.4"
+    }
+}
